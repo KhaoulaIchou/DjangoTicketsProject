@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Agency - Start Bootstrap Theme</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{% static 'DjangoWebApplication/css/styles.css' %}" rel="stylesheet" />
+
+    <style>
+        body {
+            background-image: url("{% static 'DjangoWebApplication/img/back.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        
+        .navbar {
+            background: transparent;
+        }
+        
+        .navbar-expand-lg {
+            background: transparent;
+        }
+        
+        .navbar-toggler-icon {
+            background-color: white;
+        }
+        
+        .navbar-brand, .nav-link {
+            color: white;
+        }
+        
+        .btn-outline-dark {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .text-white {
+            color: white;
+        }
+        
+        .masthead {
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.7);
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("{% static 'DjangoWebApplication/img/back.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        
+        .custom-button {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        .custom-button:hover {
+            background-color: white;
+            color: black;
+            transition: all 0.3s ease;
+        }
+        
+        .custom-navbar-brand {
+            color: white;
+            font-family: "Your desired font", sans-serif;
+            font-weight: bold;
+            font-size: 22px; /* Modifier la taille de la police selon vos préférences */
+            margin-right: 10px; /* Ajouter un espace à droite */
+        }
+        
+        .custom-nav-link {
+            color: white;
+            font-family: "Your desired font", sans-serif;
+            font-weight: bold;
+            font-size: 22px; /* Modifier la taille de la police selon vos préférences */
+            margin-right: 10px; /* Ajouter un espace à droite */
+        }
+        
+        .custom-navbar-brand:hover,
+        .custom-nav-link:hover {
+            color: #ffffff80; /* Modifier la couleur au survol selon vos préférences */
+        }
+        
+        
+
+    </style>
+</head>
+<body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <!--<img src="{% static 'DjangoWebApplication/img/ttc.png' %}" width="150" height="80" class="d-inline-block align-top" alt="">-->
+            <a class="navbar-brand" href="#" style="color: white; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; font-size: 20px; margin-right: 10px;">Tickets</a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'principal_page' %}" style="color: white;  text-transform: uppercase; letter-spacing: 2px; font-weight: bold; font-size: 20px; margin-right: 10px;">Home <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            
+            <div class="d-flex ml-3">
+                <a class="btn btn-outline-dark custom-button" href="{% url 'login' %}" role="button">Login</a>
+            </div>
+            <div class="d-flex ml-3">
+                <a class="btn btn-outline-dark custom-button" href="{% url 'register' %}" role="button">SignUp</a>
+            </div>
+        </div>
+    </nav>
+    
+    
+
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container">
+            <div class="masthead-subheading text-white">Welcome To Tickets Online!</div>
+            <div class="masthead-heading text-uppercase text-white">It's Nice To Meet You</div>
+            <a class="btn btn-primary btn-xl text-uppercase custom-button" href="#services"><span>Login to See last events</span></a>
+        </div>
+    </header>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="{% static 'DjangoWebApplication/js/scripts.js' %}"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</body>
+</html>

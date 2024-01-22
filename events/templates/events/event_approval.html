@@ -1,0 +1,10 @@
+{% extends 'accounts/dashboard_user.html' %}
+
+{% block content %}
+  <h1>Approve Event</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Approve</button>
+  </form>
+{% endblock %}

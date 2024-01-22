@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content=
+        "width=device-width, initial-scale=1.0">
+  
+    <title>
+        How to design Responsive card-deck 
+        with fixed width in Bootstrap ?
+    </title>
+  
+    <!-- bootstrap linked-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+    <style>
+      /* Styles for background image */
+      body {
+          background-image: url("{% static 'DjangoWebApplication/img/back.jpg' %}");
+          background-size: cover;
+          background-position: center;
+      }
+
+      /* Styles for navbar */
+      
+      .navbar {
+          background: transparent;
+          margin-bottom: 20px;
+      }
+
+      .navbar-expand-lg {
+          background: transparent;
+      }
+
+      .navbar-toggler-icon {
+          background-color: white;
+      }
+
+      .navbar-brand,
+      .nav-link {
+          color: white;
+      }
+
+      .custom-button {
+          background-color: transparent;
+          color: white;
+          border: 2px solid white;
+          padding: 10px 20px;
+          border-radius: 50px;
+          font-weight: bold;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          transition: all 0.3s ease;
+      }
+
+      .custom-button:hover {
+          background-color: white;
+          color: black;
+          transition: all 0.3s ease;
+      }
+
+      .custom-navbar-brand {
+          color: white;
+          font-family: "Your desired font", sans-serif;
+          font-weight: bold;
+          font-size: 22px;
+          margin-right: 10px;
+      }
+
+      .custom-nav-link {
+          color: white;
+          font-family: "Your desired font", sans-serif;
+          font-weight: bold;
+          font-size: 22px;
+          margin-right: 10px;
+      }
+
+      .custom-navbar-brand:hover,
+      .custom-nav-link:hover {
+          color: #ffffff80;
+      }
+
+      .login-container {
+          background-color: rgba(0, 0, 0, 0.7);
+          padding: 20px;
+          border-radius: 10px;
+          max-width: 400px;
+          width: 100%;
+          margin: 0 auto;
+      }
+
+      .login-title {
+          color: white;
+          font-size: 24px;
+          font-weight: bold;
+          text-align: center;
+          margin-bottom: 20px;
+      }
+
+      .form-group {
+          margin-bottom: 20px;
+      }
+
+      .form-label {
+          color: white;
+          font-weight: bold;
+      }
+
+      .form-control {
+          background-color: transparent;
+          border: 2px solid white;
+          color: white;
+      }
+
+      .form-control:focus {
+          box-shadow: none;
+      }
+
+      .login-button {
+          background-color: transparent;
+          color: white;
+          border: 2px solid white;
+          width: 100%;
+          padding: 10px;
+          border-radius: 50px;
+          font-weight: bold;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          transition: all 0.3s ease;
+      }
+
+      .login-button:hover {
+          background-color: white;
+          color: black;
+          transition: all 0.3s ease;
+      }
+  .navbar-scrolled {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+  }
+  .events {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin-top: 70px; 
+  }
+
+  .row {
+    width: 100%;
+    max-width: 1200px;
+  }
+  .profile-events {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .profile-event-card {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin-bottom: 20px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    flex: 0 0 calc(33.33% - 20px);
+  }
+
+  .profile-event-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+
+  .profile-event-card .event-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .profile-event-card .event-subtitle {
+    color: #888;
+    margin-bottom: 10px;
+  }
+
+  .profile-event-card .event-organizer {
+    display: flex;
+    align-items: center;
+  }
+
+  .profile-event-card .organizer-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    margin-right: 10px;
+  }
+
+  .profile-event-card .organizer-name {
+    color: #888;
+  }
+
+  .profile-event-card .remove-ticket-button {
+    text-align: right;
+  }
+
+  .profile-event-card .remove-ticket-button .btn {
+    background-color: #dc3545;
+    color: white;
+    border-radius: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 5px 20px;
+    transition: all 0.3s ease;
+  }
+
+  .profile-event-card .remove-ticket-button .btn:hover {
+    background-color: #c82333;
+    transition: all 0.3s ease;
+  }
+          </style>
+</head>
+  
+<body>
+
+  <!--<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <img src="{% static 'DjangoWebApplication\img\ttc.png'%}" width="150" height="80" class="d-inline-block align-top" alt="">
+      
+      <a class="navbar-brand" href="#">Tickets</a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  href="{% url 'user_profile' %}">Your Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="{% url 'user_profile' %}">User Tickets</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0"  action="{% url 'event_list' %}" method="GET">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search by location" aria-label="Search">
+        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+      </form>
+      <div>   </div>
+      <div class="d-flex">
+        <a class="btn btn-outline-dark" href="{% url 'logout' %}" role="button">Logout</a>
+      </div>
+    </div>
+  </nav>-->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <!--<img src="{% static 'DjangoWebApplication/img/ttc.png' %}" width="150" height="80" class="d-inline-block align-top" alt="">-->
+      <a class="navbar-brand" href="#" style="color: white; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; font-size: 20px; margin-right: 10px;">Tickets</a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'user_profile' %}" style="color: white;  text-transform: uppercase; letter-spacing: 2px; font-weight: bold; font-size: 20px; margin-right: 10px;">User Tickets <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'user_profile' %}" style="color: white;  text-transform: uppercase; letter-spacing: 2px; font-weight: bold; font-size: 20px; margin-right: 10px;">Your Profile <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0"  action="{% url 'event_list' %}" method="GET">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search by location" aria-label="Search">
+        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+      </form>
+      <div class="d-flex ml-3">
+        <a class="btn btn-outline-dark custom-button" href="{% url 'logout' %}" role="button">LogOut</a>
+      </div>
+    </div>
+  </nav>
+ 
+<!-- Organizer Events -->
+<div class="events">
+<div class="container mt-4 text-center profile-events">
+
+<!-- List of Events -->
+<div class="row">
+
+
+  
+
+  {% if events %}
+  {% for event in events %}
+    <div class="col-md-4 mb-4 profile-event-card">
+      <div class="card h-100 shadow-sm">
+        <!-- Display the event image as the card header -->
+        {% if event.image %}
+          <img src="{{ event.image.url }}" class="card-img-top" alt="{{ event.name }}">
+        {% else %}
+          <!-- Placeholder image when no image is available -->
+          <img src="https://via.placeholder.com/300x200?text=No+Image" class="card-img-top" alt="No Image">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title event-title">{{ event.name }}</h5>
+          <p class="card-subtitle text-muted event-subtitle">{{ event.date }} {{ event.time }}</p>
+          <p class="card-text">{{ event.description }}</p>
+          <h3>{{ event.ticket_price }} DHs</h3>
+        </div>
+        <div class="card-footer">
+          <div class="event-organizer">
+            {% if event.organizer.avatar %}
+              <img src="{{ event.organizer.avatar.url }}" class="organizer-avatar rounded-circle mr-2" width="32" height="32" alt="{{ event.organizer.name }}">
+            {% else %}
+              <!-- Placeholder image when no image is available -->
+              <img src="https://via.placeholder.com/32?text=No+Avatar" class="organizer-avatar rounded-circle mr-2" width="32" height="32" alt="No Avatar">
+            {% endif %}
+            <small class="organizer-name text-muted">{{ event.organizer.name }}</small>
+          </div>
+          <div class="remove-ticket-button">
+            <form method="post">
+              {% csrf_token %}
+              <input type="hidden" name="event_id" value="{{ event.id }}">
+              <button type="submit" class="btn btn-danger">Buy Ticket</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% else %}
+  <!-- Display empty cards -->
+  {% for i in "1234567" %}
+    {% if i == "1" %}
+      <!-- Display create new event button as the first card in a column -->
+      <div class="col-md-4 mb-4 profile-event-card">
+        <!-- Create new event card code here -->
+      </div>
+    {% else %}
+      <div class="col-md-4 mb-4 profile-event-card">
+        <div class="card h-100 shadow-sm">
+          <!-- Empty card with a placeholder image and text -->
+          <img src="https://via.placeholder.com/300x200?text=No+Image" class="card-img-top" alt="No Image">
+          <div class="card-body">
+            <h5 class="card-title event-title">No Event</h5>
+            <p class="card-subtitle text-muted event-subtitle">No Date No Time</p>
+            <p class="card-text">No Description</p>
+            <a href="#" class="btn btn-outline-primary disabled">View Event</a>
+          </div>
+          <div class="card-footer">
+            <div class="event-organizer">
+              <img src="https://via.placeholder.com/32?text=No+Avatar" class="organizer-avatar rounded-circle mr-2" width="32" height="32" alt="No Avatar">
+              <small class="organizer-name text-muted">No Organizer</small>
+            </div>
+            <div class="remove-ticket-button">
+              <a href="#" class="btn btn-success">Buy Ticket</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+</div>
+</div>
+<div >
+  {% for event in new_events %}
+    {% if event.status == 'approved'  and not event.message_read %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <div class="notification">New event approved: {{ event.title }}</div>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      </div>
+      </div>
+      {% with message_read as True %}
+      {% endwith %}
+    {% endif %}
+  {% endfor %}
+ </div>
+</div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity=
+"sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous">
+    </script>
+      
+    <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity=
+"sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous">
+    </script>
+      
+    <script src=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity=
+"sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous">
+    </script>
+    <script>
+          // Fonction pour ajouter ou supprimer la classe de fond de navbar lors du défilement
+          function toggleNavbarBackground() {
+            const navbar = document.querySelector('.navbar');
+            const scrolledClass = 'navbar-scrolled';
+        
+            if (window.scrollY > 0) {
+              navbar.classList.add(scrolledClass);
+            } else {
+              navbar.classList.remove(scrolledClass);
+            }
+          }
+        
+          // Écouteur d'événement pour le défilement de la page
+          window.addEventListener('scroll', toggleNavbarBackground);
+        </script>
+</body>
+  
+</html>

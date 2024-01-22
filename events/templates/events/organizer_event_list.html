@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <title>My Project</title>
+  <!-- Link Bootstrap CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Add custom CSS -->
+  <style>
+    body {
+      background-image: url("{% static 'DjangoWebApplication/img/back.jpg' %}");
+      /*background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 100vh;
+      margin: 0;*/
+      background-size: 100% 100%; 
+    }
+    .formss {
+      justify-content: center;
+      margin-top: 70px; 
+    }
+  
+
+    .navbar {
+      background: transparent;
+      margin-bottom: 70px;
+    }
+
+    .navbar-expand-lg {
+      background: transparent;
+    }
+
+    .navbar-toggler-icon {
+      background-color: white;
+    }
+
+    .navbar-brand,
+    .nav-link {
+      color: white;
+    }
+    .navbar-scrolled {
+      background-color: rgba(0, 0, 0, 0.7) !important;
+    }
+    .custom-button {
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .custom-button:hover {
+      background-color: white;
+      color: black;
+      transition: all 0.3s ease;
+    }
+
+    .custom-navbar-brand {
+      color: white;
+      font-family: "Your desired font", sans-serif;
+      font-weight: bold;
+      font-size: 22px;
+      margin-right: 10px;
+    }
+
+    .custom-nav-link {
+      color: white;
+      font-family: "Your desired font", sans-serif;
+      font-weight: bold;
+      font-size: 22px;
+      margin-right: 10px;
+    }
+
+    .custom-navbar-brand:hover,
+    .custom-nav-link:hover {
+      color: #ffffff80;
+    }
+
+    .form-container {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 800px; /* Largeur maximale du formulaire */
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .form-title {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      display: grid;
+      grid-template-columns: auto;
+      align-items: center;
+    }
+  
+    .form-label {
+      color: white;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+  
+    .form-group .form-control {
+      background-color: transparent;
+      border: 2px solid white;
+      color: white;
+    }
+    
+  
+    .form-group .form-control:focus {
+      box-shadow: none;
+    }
+
+    .register-button {
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+      width: 100%;
+      padding: 10px;
+      border-radius: 50px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .register-button:hover {
+      background-color: white;
+      color: black;
+      transition: all 0.3s ease;
+    }
+
+    .profile-pic-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    .profile-pic {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      overflow: hidden;
+      border-radius: 50%;
+    }
+
+    .profile-pic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .add-icon {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background-color: white;
+      color: black;
+      border-radius: 50%;
+      padding: 10px; /* Increase the padding to make the icon larger */
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+
+    .add-icon:hover {
+      background-color: black;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .add-label {
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      line-height: 20px;
+    }
+
+    .add-input {
+      display: none;
+    }
+    .navbar-scrolled {
+      background-color: rgba(0, 0, 0, 0.7) !important;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+  
+    .form-container {
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+    }
+  
+    .form-title {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  
+    .image-container {
+      position: relative;
+      width: 400px;
+      height: 200px;
+      margin: 0 auto;
+      margin-bottom: 20px;
+    }
+  
+    .image {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border: 2px solid white;
+      border-radius: 0;
+    }
+  
+    .image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  
+
+    .add-icon {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background-color: white;
+      color: black;
+      border-radius: 50%;
+      padding: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .add-icon:hover {
+      background-color: black;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .add-label {
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      line-height: 20px;
+    }
+  
+    .add-input {
+      display: none;
+    }
+    .form-container {
+      animation: fade-in 1s ease-in-out;
+    }
+  
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .event-cards {
+      /* Autres propriétés */
+      max-width: 1200px; /* Modifiez la valeur selon vos besoins */
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .event-cards {
+      /* Autres propriétés */
+    }
+    
+    .card-deck {
+      /* Autres propriétés */
+    }
+    
+    .card {
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      margin-bottom: 20px;
+      max-width: 400px; /* Modifiez la valeur selon vos besoins */
+      margin-left: auto;
+      margin-right: auto;
+      flex: 0 0 calc(33.33% - 20px);
+    }
+    
+    
+    .card img.card-img-top {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .card-body h5.card-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .card-body p.card-text {
+      /* Autres propriétés */
+    }
+    
+    .list-group.list-group-flush {
+      /* Autres propriétés */
+    }
+    
+    .list-group-item {
+      /* Autres propriétés */
+    }
+    
+    .card-footer {
+      /* Autres propriétés */
+    }
+    
+    .card-footer a.btn {
+      /* Autres propriétés */
+    }
+    .navbar-scrolled {
+      background-color: rgba(0, 0, 0, 0.7) !important;
+    }
+    
+  </style>
+</head>
+<body>
+  <!-- Replace your navbar with this one -->
+  <!--<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <img src="{% static 'DjangoWebApplication\img\ttc.png'%}" width="150" height="80" class="d-inline-block align-top" alt="">
+      <a class="navbar-brand" href="#">Tickets</a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'organizer_profile' %}">Profile <span class="sr-only">(current)</span></a>
+        </li>
+       
+      </ul>
+      
+      <div class="d-flex">
+        <a class="btn btn-outline-dark" href="{% url 'logout' %}" role="button">Logout</a>
+      </div>
+    </div>
+  </nav>-->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <!--<img src="{% static 'DjangoWebApplication/img/ttc.png' %}" width="150" height="80" class="d-inline-block align-top" alt="">-->
+      <a class="navbar-brand" href="#" style="color: white; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; font-size: 20px; margin-right: 10px;">Tickets</a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'organizer_profile' %}" style="color: white;  text-transform: uppercase; letter-spacing: 2px; font-weight: bold; font-size: 20px; margin-right: 10px;">Your Profile <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <div class="d-flex ml-3">
+        <a class="btn btn-outline-dark custom-button" href="{% url 'logout' %}" role="button">LogOut</a>
+      </div>
+    </div>
+  </nav>
+  {% block content %}
+  <!-- Add Event Form -->
+  <!-- Add Event Form -->
+<!-- Add Event Form -->
+<div class="container">
+  <div class="form-container my-5 d-flex flex-column align-items-center">
+    <h1 class="form-title">Add Event</h1>
+    <div class="image-container">
+      <div class="image">
+        {% if form.instance.image %}
+          <img id="image" src="{{ form.instance.image.url }}" alt="Image">
+        {% else %}
+          <img id="image" src="{% static 'DjangoWebApplication/img/events1.jpg' %}" alt="Image">
+        {% endif %}
+        {% if not form.instance.image %}
+        <div class="add-icon" onclick="selectNewProfilePic()"><i class="fas fa-plus"></i></div>
+        <label class="add-label" for="profile-pic-edit">Add Photo</label>
+        {% endif %}
+      </div>
+    </div>
+    <!--<div class="form-container my-5 d-flex flex-column align-items-center">-->
+    <form class="form-horizontal" method="POST" enctype="multipart/form-data" id="add-event-form">
+      {% csrf_token %}
+      <div class="form-group">
+        {% for field in user_form %}
+        {% if field.name != 'image' %}
+        <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="form-group">
+        {% for field in form %}
+        {% if field.name != 'image' %}
+        <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        {% endif %}
+        {% endfor %}
+        <!-- Move the input element here -->
+        <input type="file" id="profile-pic-edit" name="image" accept="image/*" class="add-input" onchange="loadNewProfilePic(event)">
+        {% if form.instance.image %}
+        <a class="replace-image-link" href="#" onclick="selectNewProfilePic()"><i class="fas fa-plus"></i> Replace Image</a>
+        {% endif %}
+      </div>
+
+      <button type="submit" class="register-button btn btn-primary btn-block">Add new Event</button>
+    </form>
+  <!--</div>-->
+  </div>
+</div>
+
+<!-- JavaScript code to handle form submission -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    // Handle form submission
+    $('#add-event-form').on('submit', function(event) {
+      event.preventDefault();
+      var formData = new FormData(this);
+      $.ajax({
+        url: '{% url "organizer_event_list" %}',
+        method: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(data) {
+          // Update the event list
+          var newRow = '<tr data-event-id="' + data.id + '">' +
+            '<td>' + data.title + '</td>' +
+            '<td>' + data.description + '</td>' +
+            '<td>' + data.location + '</td>' +
+            '<td>' + data.date_time + '</td>' +
+            '<td>' + data.ticket_price + '</td>' +
+            '<td>' + data.tickets_available + '</td>' +
+            '<td>' +
+            '<button class="btn btn-warning update-button">Update</button> ' +
+            '<a href="/events/' + data.id + '/delete/" class="btn btn-danger">Delete</a>' +
+            '</td>' +
+            '</tr>';
+          $('table tbody').append(newRow);
+          // Reset the form fields
+          $('#add-event-form').find('input').val(''); // Clear all input fields
+          $('#add-event-form').find('textarea').val(''); // Clear all textarea fields
+          $('#add-event-form').find('select').prop('selectedIndex', 0); // Reset all select fields
+        }
+      });
+    });
+  });
+
+  function selectNewProfilePic() {
+    document.getElementById('profile-pic-edit').click();
+  }
+
+  function loadNewProfilePic(event) {
+    var file = event.target.files[0];
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      var output = document.getElementById('image');
+      output.src = e.target.result;
+    };
+
+    reader.readAsDataURL(file);
+  }
+</script>
+
+  <!-- List of Events -->
+  <!-- List of Events -->
+  <!--<h3 style="text-align: center;">All My Events</h3>
+  <hr>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Location</th>
+        <th>Date and Time</th>
+        <th>Ticket Price</th>
+        <th>Tickets Available</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for event in events %}
+      <tr data-event-id="{{ event.pk }}">
+        <td>{{ event.title }}</td>
+        <td>{{ event.description }}</td>
+        <td>{{ event.location }}</td>
+        <td>{{ event.date_time }}</td>
+        <td>{{ event.ticket_price }}</td>
+        <td>{{ event.tickets_available }}</td>
+          <a href="{% url 'event_update' event.pk %}" class="btn btn-warning">Update</a> 
+          <a href="{% url 'event_delete' event.pk %}" class="btn btn-danger">Delete</a> 
+        </td> 
+      </tr> 
+     {% endfor %} 
+   </tbody> 
+ </table> 
+{% endblock %} -->
+<h3 style="text-align: center;">All My Events</h3>
+<hr>
+<div class="event-cards fade-in">
+  <div class="card-deck" id="card-container">
+    {% for event in events %}
+    <div class="card animated fade-in hidden">
+      <div class="card-body">
+        <h5 class="card-title">{{ event.title }}</h5>
+        <p class="card-text">{{ event.description }}</p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>Location:</strong> {{ event.location }}</li>
+          <li class="list-group-item"><strong>Date and Time:</strong> {{ event.date_time }}</li>
+          <li class="list-group-item"><strong>Ticket Price:</strong> {{ event.ticket_price }}</li>
+          <li class="list-group-item"><strong>Tickets Available:</strong> {{ event.tickets_available }}</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <a href="{% url 'event_update' event.pk %}" class="btn btn-warning">Update</a>
+        <a href="{% url 'event_delete' event.pk %}" class="btn btn-danger">Delete</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    var cards = $(".card");
+    var index = 0;
+
+    function showNextCard() {
+      if (index < cards.length) {
+        var card = cards.eq(index);
+        card.removeClass("hidden");
+        card.addClass("fadeIn");
+        index++;
+
+        // Load next card after a delay (e.g., 500ms)
+        setTimeout(showNextCard, 500);
+      }
+    }
+
+    // Start loading the cards
+    showNextCard();
+  });
+</script>
+<script>
+  function toggleNavbarBackground() {
+    const navbar = document.querySelector('.navbar');
+    const scrolledClass = 'navbar-scrolled';
+
+    if (window.scrollY > 0) {
+      navbar.classList.add(scrolledClass);
+    } else {
+      navbar.classList.remove(scrolledClass);
+    }
+  }
+
+  // Écouteur d'événement pour le défilement de la page
+  window.addEventListener('scroll', toggleNavbarBackground);
+</script>
+
+
+</body> 
+</html>
+

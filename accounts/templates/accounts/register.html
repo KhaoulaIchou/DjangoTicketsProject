@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <title>Register</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      background-image: url("{% static 'DjangoWebApplication/img/back.jpg' %}");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .formss {
+      justify-content: center;
+      margin-top: 70px; 
+    }
+  
+
+    .navbar {
+      background: transparent;
+      margin-bottom: 70px;
+    }
+
+    .navbar-expand-lg {
+      background: transparent;
+    }
+
+    .navbar-toggler-icon {
+      background-color: white;
+    }
+
+    .navbar-brand,
+    .nav-link {
+      color: white;
+    }
+    .navbar-scrolled {
+      background-color: rgba(0, 0, 0, 0.7) !important;
+    }
+    .custom-button {
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .custom-button:hover {
+      background-color: white;
+      color: black;
+      transition: all 0.3s ease;
+    }
+
+    .custom-navbar-brand {
+      color: white;
+      font-family: "Your desired font", sans-serif;
+      font-weight: bold;
+      font-size: 22px;
+      margin-right: 10px;
+    }
+
+    .custom-nav-link {
+      color: white;
+      font-family: "Your desired font", sans-serif;
+      font-weight: bold;
+      font-size: 22px;
+      margin-right: 10px;
+    }
+
+    .custom-navbar-brand:hover,
+    .custom-nav-link:hover {
+      color: #ffffff80;
+    }
+
+    .form-container {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 800px; /* Largeur maximale du formulaire */
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .form-title {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      display: grid;
+      grid-template-columns: auto;
+      align-items: center;
+    }
+  
+    .form-label {
+      color: white;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+  
+    .form-group .form-control {
+      background-color: transparent;
+      border: 2px solid white;
+      color: white;
+    }
+    
+  
+    .form-group .form-control:focus {
+      box-shadow: none;
+    }
+
+    .register-button {
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+      width: 100%;
+      padding: 10px;
+      border-radius: 50px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .register-button:hover {
+      background-color: white;
+      color: black;
+      transition: all 0.3s ease;
+    }
+
+    .profile-pic-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    .profile-pic {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      overflow: hidden;
+      border-radius: 50%;
+    }
+
+    .profile-pic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .add-icon {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background-color: white;
+      color: black;
+      border-radius: 50%;
+      padding: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .add-icon:hover {
+      background-color: black;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .add-label {
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      line-height: 20px;
+    }
+
+    .add-input {
+      display: none;
+    }
+    .navbar-scrolled {
+      background-color: rgba(0, 0, 0, 0.7) !important;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <!--<img src="{% static 'DjangoWebApplication/img/ttc.png' %}" width="150" height="80" class="d-inline-block align-top" alt="">-->
+      <a class="navbar-brand" href="#" style="color: white; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; font-size: 20px; margin-right: 10px;">Tickets</a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'user_profile' %}" style="color: white;  text-transform: uppercase; letter-spacing: 2px; font-weight: bold; font-size: 20px; margin-right: 10px;">User Tickets <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'user_profile' %}" style="color: white;  text-transform: uppercase; letter-spacing: 2px; font-weight: bold; font-size: 20px; margin-right: 10px;">Your Profile <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <div class="d-flex ml-3">
+        <a class="btn btn-outline-dark custom-button" href="{% url 'logout' %}" role="button">LogOut</a>
+      </div>
+    </div>
+  </nav>
+  <div class="container d-flex justify-content-center align-items-center">
+    <div class="form-container my-5">
+      <h1 class="form-title">Register</h1>
+      <div class="profile-pic-container">
+        <div class="profile-pic">
+          {% if account_form.instance.profile_pic %}
+            <img id="profile-pic" src="{{ account_form.instance.profile_pic.url }}" alt="Profile Picture">
+          {% else %}
+          <img id="profile-pic" src="{% static 'DjangoWebApplication/img/org.png' %}" alt="Profile Picture">
+          {% endif %}
+          {% if not account_form.instance.profile_pic %}
+            <div class="add-icon" onclick="selectNewProfilePic()"><i class="fas fa-plus"></i></div>
+            <label class="add-label" for="profile-pic-edit">Add Photo</label>
+          {% endif %}
+        </div>
+        <!--<input type="file" id="profile-pic-edit" name="profile_pic" accept="image/*" class="add-input" onchange="loadNewProfilePic(event)">-->
+      </div>
+  
+      <form class="form-horizontal" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-sm-6">
+            {% for field in user_form %}
+            {% if field.name != 'profile_pic' %}
+            <div class="form-group">
+              <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+              {{ field }}
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+          <div class="col-sm-6">
+            {% for field in account_form %}
+            {% if field.name != 'profile_pic' %}
+            <div class="form-group">
+              <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+              {{ field }}
+            </div>
+            {% endif %}
+            {% endfor %}
+            <!-- Move the input element here -->
+            <input type="file" id="profile-pic-edit" name="profile_pic" accept="image/*" class="add-input" onchange="loadNewProfilePic(event)">
+          </div>
+        </div>
+        <button type="submit" class="register-button btn btn-primary btn-block">Register</button>
+      </form>
+      
+    </div>
+  </div>
+  
+  <script>
+    function selectNewProfilePic() {
+      document.getElementById('profile-pic-edit').click();
+    }
+    
+    function loadNewProfilePic(event) {
+      var file = event.target.files[0];
+      var reader = new FileReader();
+    
+      reader.onload = function(e) {
+        var output = document.getElementById('profile-pic');
+        output.src = e.target.result;
+      };
+    
+      reader.readAsDataURL(file);
+    }
+    function toggleNavbarBackground() {
+      const navbar = document.querySelector('.navbar');
+      const scrolledClass = 'navbar-scrolled';
+  
+      if (window.scrollY > 0) {
+        navbar.classList.add(scrolledClass);
+      } else {
+        navbar.classList.remove(scrolledClass);
+      }
+    }
+  
+    // Scroll event listener for the page
+    window.addEventListener('scroll', toggleNavbarBackground);
+    
+  </script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

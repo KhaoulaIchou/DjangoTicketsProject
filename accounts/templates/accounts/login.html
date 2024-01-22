@@ -1,0 +1,225 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    body {
+      background-image: url("{% static 'DjangoWebApplication/img/back.jpg' %}");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .navbar {
+      background: transparent;
+    }
+
+    .navbar-expand-lg {
+      background: transparent;
+    }
+
+    .navbar-toggler-icon {
+      background-color: white;
+    }
+
+    .navbar-brand,
+    .nav-link {
+      color: white;
+    }
+
+    .custom-button {
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .custom-button:hover {
+      background-color: white;
+      color: black;
+      transition: all 0.3s ease;
+    }
+
+    .custom-navbar-brand {
+      color: white;
+      font-family: "Your desired font", sans-serif;
+      font-weight: bold;
+      font-size: 22px;
+      margin-right: 10px;
+    }
+
+    .custom-nav-link {
+      color: white;
+      font-family: "Your desired font", sans-serif;
+      font-weight: bold;
+      font-size: 22px;
+      margin-right: 10px;
+    }
+
+    .custom-navbar-brand:hover,
+    .custom-nav-link:hover {
+      color: #ffffff80;
+    }
+
+    .login-container {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .login-title {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      color: white;
+      font-weight: bold;
+    }
+
+    .form-control {
+      background-color: transparent;
+      border: 2px solid white;
+      color: white;
+    }
+
+    .form-control:focus {
+      box-shadow: none;
+    }
+
+    .login-button {
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+      width: 100%;
+      padding: 10px;
+      border-radius: 50px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .login-button:hover {
+      background-color: white;
+      color: black;
+      transition: all 0.3s ease;
+    }
+
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .social-media-list {
+      display: flex;
+      list-style: none;
+      justify-content: center;
+      margin-top: 10px;
+    }
+  
+    .social-media-icon {
+      color: white;
+      font-size: 28px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <!--<img src="{% static 'DjangoWebApplication/img/ttc.png' %}" width="150" height="80" class="d-inline-block align-top" alt="">-->
+      <a class="navbar-brand" href="#" style="color: white; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; font-size: 20px; margin-right: 10px;">Tickets</a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'principal_page' %}" style="color: white;  text-transform: uppercase; letter-spacing: 2px; font-weight: bold; font-size: 20px; margin-right: 10px;">Home <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+
+      <div class="d-flex ml-3">
+        <a class="btn btn-outline-dark custom-button" href="{% url 'register' %}" role="button">SignUp</a>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="container">
+    <div class="login-container">
+      <h1 class="login-title">Login</h1>
+      <form method="POST">
+        {% csrf_token %}
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-danger">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+        <div class="form-group">
+          <label class="form-label" for="username">Username</label>
+          <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <button type="submit" class="login-button">Login</button>
+      </form>
+      <div class="social-media-container">
+        <p class="social-media-title">Contactez-nous :</p>
+        <ul class="social-media-list">
+          <li class="social-media-item">
+            <a href="#" target="_blank" class="social-media-link">
+              <i class="fab fa-facebook-f social-media-icon"></i>
+            </a>
+          </li>
+          <li class="social-media-item">
+            <a href="#" target="_blank" class="social-media-link">
+              <i class="fab fa-twitter social-media-icon"></i>
+            </a>
+          </li>
+          <li class="social-media-item">
+            <a href="#" target="_blank" class="social-media-link">
+              <i class="fab fa-instagram social-media-icon"></i>
+            </a>
+          </li>
+          <li class="social-media-item">
+            <a href="mailto:contact@example.com" class="social-media-link">
+              <i class="far fa-envelope social-media-icon"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Ajoutez ce lien vers la bibliothèque Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+ <title>Update Event</title>
+ <style>
+  body {
+    background-image: url("{% static 'DjangoWebApplication/img/back.jpg' %}");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .container {
+   max-width: 600px;
+   margin: 0 auto;
+   padding: 20px;
+   background-color: white;
+   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  h2 {
+   color: #333333;
+   text-align: center;
+  }
+  p {
+   font-size: 18px;
+   color: #666666;
+   margin-bottom: 20px;
+  }
+  label {
+   display: block;
+   font-weight: bold;
+   margin-top: 10px;
+  }
+  input, textarea, select {
+   display: block;
+   width: 94%;
+   border: 1px solid #cccccc;
+   padding: 10px;
+   outline: none;
+   border-radius: 10px;
+   box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+   transition: all 0.3s ease-in-out;
+  }
+  input:focus, textarea:focus, select:focus {
+ border-color: #0000ff;
+ box-shadow: inset 0 1px 3px rgba(0,0,0,0.2), 0 0 5px rgba(0,0,255,0.5);
+ outline: none;
+}
+  .btn {
+   display: inline-block;
+   padding: 10px 20px;
+   border-radius: 5px;
+   text-decoration: none;
+   color: white;
+  }
+  .btn-primary {
+   background-color: #257a14a6;
+  }
+ label i {
+ color: #0000ff;
+ margin-right: 5px;
+}
+@media (max-width: 480px) {
+ .container {
+  width: 90%;
+ }
+ input, textarea, select {
+  width: 80%;
+ }
+}
+
+.navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #343a40; /* Change the background color to black */
+    }
+    .navbar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar li {
+      display: inline-block; /* Change the display to inline-block */
+    }
+    .navbar li a {
+      display: block; /* Change the display to block */
+      color: white; /* Change the text color to white */
+      text-decoration: none; /* Remove the underline */
+      padding: 15px 20px; /* Add some padding */
+    }
+    .navbar li a:hover {
+      background-color: #007bff; /* Change the background color on hover */
+    }
+    
+ </style>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+ <div class="container">
+ {% block content %}
+ <h2>Update Event</h2>
+ <form method="POST" enctype="multipart/form-data">
+ {% csrf_token %}
+ {{ form.as_p }}
+ <button class="btn btn-primary" type="submit">Update Event</button>
+ </form>
+ {% endblock %}
+ </div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+ <title>Delete Event</title>
+ <style>
+  body {
+   font-family: Arial, sans-serif;
+   background-color: #f0f0f0;
+  }
+  .container {
+   max-width: 600px;
+   margin: 0 auto;
+   padding: 20px;
+   background-color: white;
+   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+
+  h2 {
+   color: #333333;
+   text-align: center;
+  }
+  p {
+   font-size: 18px;
+   color: #666666;
+   margin-bottom: 20px;
+  }
+  .btn {
+   display: inline-block;
+   padding: 10px 20px;
+   border-radius: 5px;
+   text-decoration: none;
+   color: white;
+  }
+  .btn-danger {
+   background-color: #ff0000;
+  }
+  .btn-secondary {
+   background-color: #cccccc;
+  }
+  .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #343a40; /* Change the background color to black */
+    }
+    .navbar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar li {
+      display: inline-block; /* Change the display to inline-block */
+    }
+    .navbar li a {
+      display: block; /* Change the display to block */
+      color: white; /* Change the text color to white */
+      text-decoration: none; /* Remove the underline */
+      padding: 15px 20px; /* Add some padding */
+    }
+    .navbar li a:hover {
+      background-color: #007bff; /* Change the background color on hover */
+    }
+    
+ </style>
+</head>
+<body>
+    
+ <div class="container">
+ {% block content %}
+ <h2>Delete Event</h2>
+ <form method="POST">
+ {% csrf_token %}
+ <p>Are you sure you want to delete "{{ object }}"?</p>
+ <button class="btn btn-danger" type="submit">Yes, delete</button>
+ <a class="btn btn-secondary" href="{% url 'organizer_event_list' %}">No, cancel</a>
+ </form>
+ {% endblock %}
+ </div>
+</body>
+</html>

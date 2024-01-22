@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+ <title>Details of Event</title>
+</head>
+<body>
+    <h1>{{ event.title }}</h1>
+    <p>{{ event.date_time|date:"F j, Y" }} {{ event.date_time|date:"g:i A" }}</p>
+    <p>{{ event.description }}</p>
+    <p>Organizer: {{ event.organizer.first_name }} {{ event.organizer.last_name }}</p>
+    
+</body>
+</html>
